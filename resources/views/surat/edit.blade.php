@@ -78,115 +78,130 @@
                     <h6 class="heading-small text-muted">Isian</h6>
                     <div class="pl-lg-4" id="isian">
                         @if ($surat->perihal == 1)
-                            @php
-                                $perihal = array();
-                                foreach ($surat->isiSurat->where('jenis_isi',4) as $isiSurat) {
-                                    array_push($perihal, $isiSurat->isi);
-                                }
-                            @endphp
-                            <div id="isian_perihal">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-control-label">Sifat</label>
-                                            <input class="form-control form-control-alternative" name="isian[]" value="<?php try { echo $perihal[0]; } catch (\Throwable $th){}  ?>">
-                                            <input type="hidden" name="jenis_isi[]" value="4">
-                                            <input type="hidden" name="tampilkan[]" value="0">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label">Lampiran</label>
-                                            <input class="form-control form-control-alternative" name="isian[]" value="<?php try { echo $perihal[1]; } catch (\Throwable $th){}  ?>">
-                                            <input type="hidden" name="jenis_isi[]" value="4">
-                                            <input type="hidden" name="tampilkan[]" value="0">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label">Perihal</label>
-                                            <input class="form-control form-control-alternative" name="isian[]" value="<?php try { echo $perihal[2]; } catch (\Throwable $th){}  ?>">
-                                            <input type="hidden" name="jenis_isi[]" value="4">
-                                            <input type="hidden" name="tampilkan[]" value="0">
-                                        </div>
+                        @php
+                        $perihal = array();
+                        foreach ($surat->isiSurat->where('jenis_isi',4) as $isiSurat) {
+                        array_push($perihal, $isiSurat->isi);
+                        }
+                        @endphp
+                        <div id="isian_perihal">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Sifat</label>
+                                        <input class="form-control form-control-alternative" name="isian[]" value="<?php try {
+                                                                                                                        echo $perihal[0];
+                                                                                                                    } catch (\Throwable $th) {
+                                                                                                                    }  ?>">
+                                        <input type="hidden" name="jenis_isi[]" value="4">
+                                        <input type="hidden" name="tampilkan[]" value="0">
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-control-label">Kepada</label>
-                                            <input class="form-control form-control-alternative" name="isian[]" value="<?php try { echo $perihal[3]; } catch (\Throwable $th){}  ?>">
-                                            <input type="hidden" name="jenis_isi[]" value="4">
-                                            <input type="hidden" name="tampilkan[]" value="0">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label">Di</label>
-                                            <input class="form-control form-control-alternative" name="isian[]" value="<?php try { echo $perihal[4]; } catch (\Throwable $th){}  ?>">
-                                            <input type="hidden" name="jenis_isi[]" value="4">
-                                            <input type="hidden" name="tampilkan[]" value="0">
-                                        </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label">Lampiran</label>
+                                        <input class="form-control form-control-alternative" name="isian[]" value="<?php try {
+                                                                                                                        echo $perihal[1];
+                                                                                                                    } catch (\Throwable $th) {
+                                                                                                                    }  ?>">
+                                        <input type="hidden" name="jenis_isi[]" value="4">
+                                        <input type="hidden" name="tampilkan[]" value="0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label">Perihal</label>
+                                        <input class="form-control form-control-alternative" name="isian[]" value="<?php try {
+                                                                                                                        echo $perihal[2];
+                                                                                                                    } catch (\Throwable $th) {
+                                                                                                                    }  ?>">
+                                        <input type="hidden" name="jenis_isi[]" value="4">
+                                        <input type="hidden" name="tampilkan[]" value="0">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Kepada</label>
+                                        <input class="form-control form-control-alternative" name="isian[]" value="<?php try {
+                                                                                                                        echo $perihal[3];
+                                                                                                                    } catch (\Throwable $th) {
+                                                                                                                    }  ?>">
+                                        <input type="hidden" name="jenis_isi[]" value="4">
+                                        <input type="hidden" name="tampilkan[]" value="0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label">Di</label>
+                                        <input class="form-control form-control-alternative" name="isian[]" value="<?php try {
+                                                                                                                        echo $perihal[4];
+                                                                                                                    } catch (\Throwable $th) {
+                                                                                                                    }  ?>">
+                                        <input type="hidden" name="jenis_isi[]" value="4">
+                                        <input type="hidden" name="tampilkan[]" value="0">
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         @endif
                         @foreach ($surat->isiSurat as $key => $isiSurat)
-                            @if ($isiSurat->jenis_isi == 1)
-                                <div class="form-group">
-                                    <label class="form-control-label">Paragraf</label> <a href="{{ url('img/bantuan-paragraf.png') }}" data-fancybox><i class="fas fa-question-circle text-blue" title="Bantuan" data-toggle="tooltip"></i></a>
-                                    <div class="input-group input-group-alternative mb-3">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <input type="checkbox" name="tampil[]" value="1" data-toggle="tooltip" title="Centang untuk menampilkan paragraf ini pada form buat surat" @if($isiSurat->tampilkan == 1) checked @endif>
-                                                <input type="hidden" name="tampilkan[]" value="{{ $isiSurat->tampilkan }}">
-                                            </div>
-                                        </div>
-                                        <textarea class="form-control" name="isian[]">{{ $isiSurat->isi }}</textarea>
-                                        <input type="hidden" name="id" value="{{ $isiSurat->id }}">
-                                        <input type="hidden" name="jenis_isi[]" value="1">
-                                        @include('surat.button-isian')
-                                    </div>
-                                </div>
-                            @endif
-                            @if ($isiSurat->jenis_isi == 2)
-                                <div class="form-group">
-                                    <label class="form-control-label">Kalimat</label> <a href="{{ url('img/bantuan-kalimat.png') }}" data-fancybox><i class="fas fa-question-circle text-blue" title="Bantuan" data-toggle="tooltip"></i></a>
-                                    <div class="input-group input-group-alternative mb-3">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <input type="checkbox" name="tampil[]" value="1" data-toggle="tooltip" title="Centang untuk menampilkan kalimat ini pada form buat surat" @if($isiSurat->tampilkan == 1) checked @endif>
-                                                <input type="hidden" name="tampilkan[]" value="{{ $isiSurat->tampilkan }}">
-                                            </div>
-                                        </div>
-                                        <input type="text" class="form-control" name="isian[]" value="{{ $isiSurat->isi }}">
-                                        <input type="hidden" name="id" value="{{ $isiSurat->id }}">
-                                        <input type="hidden" name="jenis_isi[]" value="2">
-                                        @include('surat.button-isian')
-                                    </div>
-                                </div>
-                            @endif
-                            @if ($isiSurat->jenis_isi == 3)
-                                <div class="form-group">
-                                    <label class="form-control-label">Isian</label>
-                                    <div class="input-group input-group-alternative mb-3">
-                                        <input type="text" class="form-control" name="isian[]" value="{{ $isiSurat->isi }}">
-                                        <input type="hidden" name="id" value="{{ $isiSurat->id }}">
-                                        <input type="hidden" name="jenis_isi[]" value="3">
+                        @if ($isiSurat->jenis_isi == 1)
+                        <div class="form-group">
+                            <label class="form-control-label">Paragraf</label> <a href="{{ url('img/bantuan-paragraf.png') }}" data-fancybox><i class="fas fa-question-circle text-blue" title="Bantuan" data-toggle="tooltip"></i></a>
+                            <div class="input-group input-group-alternative mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="checkbox" name="tampil[]" value="1" data-toggle="tooltip" title="Centang untuk menampilkan paragraf ini pada form buat surat" @if($isiSurat->tampilkan == 1) checked @endif>
                                         <input type="hidden" name="tampilkan[]" value="{{ $isiSurat->tampilkan }}">
-                                        @include('surat.button-isian')
                                     </div>
                                 </div>
-                            @endif
-                            @if ($isiSurat->jenis_isi == 5)
-                                <div class="form-group">
-                                    <label class="form-control-label">Sub Judul</label> <a href="{{ url('img/bantuan-kalimat.png') }}" data-fancybox><i class="fas fa-question-circle text-blue" title="Bantuan" data-toggle="tooltip"></i></a>
-                                    <div class="input-group input-group-alternative mb-3">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <input type="checkbox" name="tampil[]" value="1" data-toggle="tooltip" title="Centang untuk menampilkan kalimat ini pada form buat surat" @if($isiSurat->tampilkan == 1) checked @endif>
-                                                <input type="hidden" name="tampilkan[]" value="{{ $isiSurat->tampilkan }}">
-                                            </div>
-                                        </div>
-                                        <input type="text" class="form-control" name="isian[]" value="{{ $isiSurat->isi }}">
-                                        <input type="hidden" name="id" value="{{ $isiSurat->id }}">
-                                        <input type="hidden" name="jenis_isi[]" value="5">
-                                        @include('surat.button-isian')
+                                <textarea class="form-control" name="isian[]">{{ $isiSurat->isi }}</textarea>
+                                <input type="hidden" name="id" value="{{ $isiSurat->id }}">
+                                <input type="hidden" name="jenis_isi[]" value="1">
+                                @include('surat.button-isian')
+                            </div>
+                        </div>
+                        @endif
+                        @if ($isiSurat->jenis_isi == 2)
+                        <div class="form-group">
+                            <label class="form-control-label">Kalimat</label> <a href="{{ url('img/bantuan-kalimat.png') }}" data-fancybox><i class="fas fa-question-circle text-blue" title="Bantuan" data-toggle="tooltip"></i></a>
+                            <div class="input-group input-group-alternative mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="checkbox" name="tampil[]" value="1" data-toggle="tooltip" title="Centang untuk menampilkan kalimat ini pada form buat surat" @if($isiSurat->tampilkan == 1) checked @endif>
+                                        <input type="hidden" name="tampilkan[]" value="{{ $isiSurat->tampilkan }}">
                                     </div>
                                 </div>
-                            @endif
+                                <input type="text" class="form-control" name="isian[]" value="{{ $isiSurat->isi }}">
+                                <input type="hidden" name="id" value="{{ $isiSurat->id }}">
+                                <input type="hidden" name="jenis_isi[]" value="2">
+                                @include('surat.button-isian')
+                            </div>
+                        </div>
+                        @endif
+                        @if ($isiSurat->jenis_isi == 3)
+                        <div class="form-group">
+                            <label class="form-control-label">Isian</label>
+                            <div class="input-group input-group-alternative mb-3">
+                                <input type="text" class="form-control" name="isian[]" value="{{ $isiSurat->isi }}">
+                                <input type="hidden" name="id" value="{{ $isiSurat->id }}">
+                                <input type="hidden" name="jenis_isi[]" value="3">
+                                <input type="hidden" name="tampilkan[]" value="{{ $isiSurat->tampilkan }}">
+                                @include('surat.button-isian')
+                            </div>
+                        </div>
+                        @endif
+                        @if ($isiSurat->jenis_isi == 5)
+                        <div class="form-group">
+                            <label class="form-control-label">Sub Judul</label> <a href="{{ url('img/bantuan-kalimat.png') }}" data-fancybox><i class="fas fa-question-circle text-blue" title="Bantuan" data-toggle="tooltip"></i></a>
+                            <div class="input-group input-group-alternative mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="checkbox" name="tampil[]" value="1" data-toggle="tooltip" title="Centang untuk menampilkan kalimat ini pada form buat surat" @if($isiSurat->tampilkan == 1) checked @endif>
+                                        <input type="hidden" name="tampilkan[]" value="{{ $isiSurat->tampilkan }}">
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" name="isian[]" value="{{ $isiSurat->isi }}">
+                                <input type="hidden" name="id" value="{{ $isiSurat->id }}">
+                                <input type="hidden" name="jenis_isi[]" value="5">
+                                @include('surat.button-isian')
+                            </div>
+                        </div>
+                        @endif
                         @endforeach
                     </div>
                     <h6 class="heading-small text-muted">Alat</h6>
@@ -195,7 +210,7 @@
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="tampilkan_surat_ini" name="tampilkan_surat_ini" {{ $surat->tampilkan ? 'checked="true"' : '' }} value="1">
                             <input type="hidden" name="tampilkan_surat" id="tampilkan_surat" value="{{ $surat->tampilkan }}">
-                            <label class="custom-control-label" for="tampilkan_surat_ini">Tampilkan surat ini untuk warga yang ingin mencetak surat keterangan ini</label>
+                            <!-- <label class="custom-control-label" for="tampilkan_surat_ini">Tampilkan surat ini untuk warga yang ingin mencetak surat keterangan ini</label> -->
                         </div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="tampilkan_perihal" name="tampilkan_perihal" {{ $surat->perihal ? 'checked="true"' : '' }} value="1">
@@ -227,9 +242,9 @@
 <script src="{{ asset('js/jquery.fancybox.js') }}"></script>
 <script src="{{ asset('js/surat.js') }}"></script>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         $(".ikon").val("{{ $surat->icon }}");
-        $("input:checkbox").change(function () {
+        $("input:checkbox").change(function() {
             if ($(this).prop('checked') == true) {
                 $(this).next().val('1');
             } else {

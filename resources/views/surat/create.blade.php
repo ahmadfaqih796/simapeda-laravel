@@ -84,7 +84,7 @@
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="tampilkan_surat_ini" name="tampilkan_surat_ini" value="1">
                             <input type="hidden" name="tampilkan_surat" id="tampilkan_surat" value="0">
-                            <label class="custom-control-label" for="tampilkan_surat_ini">Tampilkan surat ini untuk warga yang ingin mencetak surat keterangan ini</label>
+                            <!-- <label class="custom-control-label" for="tampilkan_surat_ini">Tampilkan surat ini untuk warga yang ingin mencetak surat keterangan ini</label> -->
                         </div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="tampilkan_perihal" name="tampilkan_perihal" value="1">
@@ -116,9 +116,9 @@
 <script src="{{ asset('js/jquery.fancybox.js') }}"></script>
 <script src="{{ asset('js/surat.js') }}"></script>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         $(".ikon").val("fa-file-text-o");
-        $("input:checkbox").change(function () {
+        $("input:checkbox").change(function() {
             if ($(this).prop('checked') == true) {
                 $(this).next().val('1');
             } else {
